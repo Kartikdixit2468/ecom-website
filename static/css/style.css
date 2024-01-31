@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Meetei+Mayek:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans+Tai+Le&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Salsa&family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+    margin: 0px;
+    padding: 0px;
+    color: #f7f7f777;
+    transition: 0.8s ease all;
+    max-width: 100vw;
+  }
+body {
+  background: rgb(255, 255, 255) !important;
+}
+#main-area {
+  height: 70vh;
+  overflow: hidden;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.66),
+      rgba(0, 0, 0, 0.66),
+      rgba(0, 0, 0, 0.66)
+    ),
+    url(/images/home_bg.png);
+  /* background-image: url('/images/home_bg.png'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-area h1 {
+  font-size: 48;
+  text-transform: capitalize;
+  font-family: "Secular One", sans-serif;
+  color: #f3f3f3;
+}
+#main-area button {
+  font-size: 20px;
+  font-family: "Salsa", cursive;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 5px;
+}
+#main-area button:hover {
+  color: #121212 !important;
+  background-color: white;
+  transition: 0.8s ease all;
+}
+.secondary-area {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.secondary-area h1 {
+  padding: 5px;
+  color: #121212;
+  font-family: "Secular One", sans-serif;
+  border-bottom: 4px solid #121212;
+}
+/* .products-container{
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;   
+} */
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns with equal width */
+  grid-gap: 20px; /* Adjust as needed for spacing */
+}
+
+.product {
+  /* Optional: Add styles for individual products */
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Responsive grid with a minimum column width of 200px */
+  grid-gap: 10px; /* Adjust as needed for spacing */
+  /* border: 2px solid red; */
+  min-width: 75vw;
+  max-width: 98vw;
+}
+.products-container a {
+  text-decoration: none;
+  border: 2px solid rgb(128, 128, 128, 0.8);
+}
+
+.card {
+  /* Optional: Add styles for individual products */
+  border: none !important;
+  text-align: center;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 18vw;
+}
+.card:hover {
+  cursor: pointer;
+  max-width: 48vh;
+}
+.image-holder {
+  padding: 5px;
+  width: 100%;
+  min-height: 8vh;
+  max-height: 50%;
+  background-color: #dddddd5d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.image-holder img {
+  width: 200px;
+  margin: auto;
+  z-index: 1;
+}
+.card-text {
+  display: flex;
+  padding: 20px;
+  padding-bottom: 0px;
+  flex-direction: column;
+  z-index: 9;
+  /* align-items: flex-start;
+    justify-content: center; */
+}
+.card-text h3 {
+  color: black;
+  font-family: "Teko", sans-serif;
+}
+.card-text p {
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-size: medium;
+  /* font-weight: 600; */
+}
+/* .price-n-discount{
+    display: flex;
+} */
+.price-offers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+  margin-top: -10px;
+}
+.main-price h2 {
+  color: black;
+  margin: 2px;
+}
+.mrp-price strike {
+  color: gray;
+  stroke-width: 100%;
+  margin: 4px;
+}
+.offer-discount {
+  color: black;
+  margin: 4px;
+  font-family: 'Oswald', sans-serif;
+}
+#shop-page-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filter-bar {
+  padding: 1px 10% 1px 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  min-height: 5.5vh;
+  max-height: 8vh;
+  background-color: rgb(35, 47, 62);
+}
+.filter-bar a {
+  text-decoration: none;
+  padding: 5px;
+  text-transform: capitalize;
+  margin: auto;
+  border-color: #f3f3f3;
+}
+.filter-bar a:hover {
+  border: 1.5px solid #f3f3f3;
+  border-radius: 2%;
+}
+.filter {
+  color: white;
+  font-family: "Noto Sans Meetei Mayek", sans-serif;
+}
+
+/* Media query for smaller screens (adjust the max-width as needed) */
+@media screen and (max-width: 768px) {
+  .products-container {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    ); /* Adjust column width for smaller screens */
+  }
+  .card{
+    margin: auto;
+    border: none;
+    max-height: 70vh;
+    /* min-width: 40vw !important; */
+    box-sizing: border-box;
+    margin-bottom: 20px !important;
+  }
+  .card-text {
+    padding: 10px;
+  }
+  .card-text p {
+    padding: 10px;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+  }
+  .price-n-discount{
+    box-sizing: border-box;
+    flex-direction: column;
+    /* border: 2px solid green; */
+}
+.mrp-price, .offer-discount{
+    font-size: small;
+    min-width: max-content;
+}
+}

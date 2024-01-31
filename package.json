@@ -1,0 +1,21 @@
+{
+  "name": "reselling-site",
+  "version": "1.0.0",
+  "description": "This is a simple Product selling website, I made for seling my products directly to customer.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Kartik Dixit",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "handlebars-helpers": "^0.10.0",
+    "mysql2": "^3.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
