@@ -38,7 +38,7 @@ app.set('view engine', 'handlebars');
 //     return str.length;
 //   });
 
-// Seperate Router
+// Seperate Router | To handle mess 
 app.use('/', main_router)
 
 
