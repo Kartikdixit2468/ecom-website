@@ -5,7 +5,6 @@
 // let product_discount = 40;
 // let product_image1 = "/images/dresses/cotton/1";
 // let product_image2 = "/images/dresses/cotton/2";
-// num_product = 20;
 
 const credentials = require("../data/credentials.js");
 const express = require("express");
