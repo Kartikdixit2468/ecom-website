@@ -185,36 +185,6 @@ img{
     border-color: transparent;
     color: #fff;
 }
-.size-sel-btn{
-    padding: 2.5px;
-    width: 100%;
-    margin-bottom: 15px;
-}
-.size-btn-container a{
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    height: 45px;
-    width: 45px;
-    border: 2px solid grey;
-    background-color: rgba(128, 128, 128, 0.05);
-    border-radius: 50%;
-    padding: 10px;
-}
-.size-btn-container a div{
-    color: rgb(0, 85, 255);
-    font-size: large;
-    font-weight: 700;
-}
-.size-btn-container{
-    display: flex ;
-    justify-content: space-between;
-  }
-.active-size-btn{
-    background-color: rgba(0, 162, 255, 0.2) !important;
-}
 
 @media screen and (min-width: 992px){
     .card{
@@ -235,8 +205,5 @@ img{
     }
     .product-content{
         padding-top: 0;
-    }
-    .size-sel-btn{
-        width: 60% !important;
     }
 }

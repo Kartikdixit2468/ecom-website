@@ -4,4 +4,3 @@ const credentials = {host: 'localhost',
                             db: 'dress_site'}
 
 module.exports = credentials;
-// export default credentials;
