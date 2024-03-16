@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="/scss/checkout.css" />
+<link rel="stylesheet" href="/css/navbar.css" />
+
+<style>
+  .navbar .nav-item,
+  .search-bar,
+  footer {
+    display: none !important;
+  }
+
+  #form-msg {
+    font-weight: bolder;
+    font-size: x-large;
+    padding: 18px;
+    background-color: #00000036;
+    border-radius: 22px;
+  }
+</style>
+
+<div class="box-title">
+  <div class="d-flex">
+    <form class="order-form" onsubmit="handlePayment(event)"> <!-- Pass event to the function -->
+      <div class="xorder">
+        <h2 id="form-msg">Please fill the form below to proceed<span class="required"> *</span></h2>
+
+        <label>
+          <span class="fname">First Name <span class="required">*</span></span>
+          <input type="text" name="fname" required />
+        </label>
+        <label>
+          <span class="lname">Last Name <span class="required">*</span></span>
+          <input type="text" name="lname" required />
+        </label>
+        <label>
+          <span>Country <span class="required">*</span></span>
+          <select name="country" required>
+            <option value="select">Select a country...</option>
+            <option value="IND">India</option>
+          </select>
+        </label>
+        <label>
+          <span>Street Address <span class="required">*</span></span>
+          <input type="text" name="houseadd" placeholder="House number and street name" required />
+        </label>
+        <label>
+          <span>&nbsp;</span>
+          <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" />
+        </label>
+        <label>
+          <span>Town / City <span class="required">*</span></span>
+          <input type="text" name="city" required />
+        </label>
+        <label>
+          <span>State<span class="required">*</span></span>
+          <select name="state" required>
+            <option value="select">Select a state...</option>
+            <option value="AP">Andhra Pradesh</option>
+            <option value="AR">Arunachal Pradesh</option>
+            <option value="AS">Assam</option>
+            <option value="BR">Bihar</option>
+            <option value="CH">Chandigarh</option>
+            <option value="CT">Chhattisgarh</option>
+            <option value="DN">Dadra and Nagar Haveli</option>
+            <option value="DD">Daman and Diu</option>
+            <option value="DL">Delhi</option>
+            <option value="GA">Goa</option>
+            <option value="GJ">Gujarat</option>
+            <option value="HR">Haryana</option>
+            <option value="HP">Himachal Pradesh</option>
+            <option value="JK">Jammu and Kashmir</option>
+            <option value="JH">Jharkhand</option>
+            <option value="KA">Karnataka</option>
+            <option value="KL">Kerala</option>
+            <option value="LD">Ladakh</option>
+            <option value="LA">Lakshadweep</option>
+            <option value="MP">Madhya Pradesh</option>
+            <option value="MH">Maharashtra</option>
+            <option value="MN">Manipur</option>
+            <option value="ML">Meghalaya</option>
+            <option value="MZ">Mizoram</option>
+            <option value="NL">Nagaland</option>
+            <option value="OR">Odisha</option>
+            <option value="PY">Puducherry</option>
+            <option value="PB">Punjab</option>
+            <option value="RJ">Rajasthan</option>
+            <option value="SK">Sikkim</option>
+            <option value="TN">Tamil Nadu</option>
+            <option value="TS">Telangana</option>
+            <option value="TR">Tripura</option>
+            <option value="UP">Uttar Pradesh</option>
+            <option value="UK">Uttarakhand</option>
+            <option value="WB">West Bengal</option>
+          </select>
+        </label>
+        <label>
+          <span>Postcode / ZIP <span class="required">*</span></span>
+          <input type="text" name="zipcode" required />
+        </label>
+        <label>
+          <span>Phone <span class="required">*</span></span>
+          <input type="tel" name="phone" required />
+        </label>
+        <label>
+          <span>Email Address <span class="required">*</span></span>
+          <input type="email" name="email" required />
+        </label>
+      </div>
+
+
+      <div class="Yorder">
+        <table>
+          <tr>
+            <th colspan="2">Your order</th>
+          </tr>
+          <tr>
+            <td>Product x {{info.[3]}}(Qty)</td>
+            <td>&#8377;{{info.[1]}}.00</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td>{{#if (eq info.[0] 0)}}
+              Free Shipping
+              {{else}}
+              &#8377;{{info.[0]}}
+              {{/if}}
+
+            </td>
+
+          </tr>
+          <tr>
+            <td>Subtotal</td>
+            <td name="">&#8377;{{info.[2]}}</td>
+            <input type="hidden" name="amount" value={{info.[2]}}>
+          </tr>
+        </table><br />
+        <div>
+          <input type="radio" name="payment_method" value="cod" required />
+          Cash on Delivery
+        </div>
+        <div>
+          <input type="radio" name="payment_method" value="prepaid" />
+          Razorpay (Pay Online)
+          <span>
+            <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt=""
+              width="50" />
+          </span>
+        </div>
+
+        <button type="submit" id="pay-btn">Place Order</button>
+
+      </div>
+    </form>
+
+  </div><!-- Yorder -->
+</div>
+</div>
+
+<script src="/js/checkout.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>

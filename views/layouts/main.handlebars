@@ -1,0 +1,203 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/footer_style.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/navbar.css">
+    {{#if notProductPage}}
+    <link rel="stylesheet" href="/css/style.css">
+    {{/if}}
+
+    <title> {{title}} </title>
+  </head>
+  <body>
+
+    <header>
+
+  <nav
+    class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom"
+    data-bs-theme="dark"
+  >
+    <div class="container-fluid logo nav-div">
+      <a class="navbar-brand" href="http://www.krishnadressstore.com">
+
+        <div class="brand">
+          <img src="/images/logo_temp.jpg" alt="" srcset="" width="40px" />
+          <div>
+          Krishna Dress Store
+          </div>
+        </div>
+      </a>
+
+      {{! This is the menu button for mobile users }}
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop">Shop</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Collections
+            </a>
+            <ul class="dropdown-menu">
+              {{!-- <li><a class="dropdown-item" href="#">Winter Collection</a></li>
+              <li><a class="dropdown-item" href="#">Summer Collection</a></li>
+              <li><a class="dropdown-item" href="#">Gujrati Collection</a></li>
+              <li><a class="dropdown-item" href="#">Vrindavan Special Collection</a></li>
+              <li><hr class="dropdown-divider" /></li> --}}
+              {{!-- <li><a class="dropdown-item" href="#">Something Else</a></li> --}}
+              <li><a class="dropdown-item">Comming Soon</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Reach Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/products">Track Order</a>
+          </li>
+
+        </ul>
+
+        <form class="d-flex search-bar" role="search" action="/search">
+          <input
+          name="query"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          {{!-- <button class="btn btn-outline-success" type="submit">Search</button> --}}
+          <a id="cart-icon" href="/my-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </form>
+      </div>
+
+    </div>
+  </nav>
+
+</header>
+
+
+    {{{body}}}
+
+<footer class="footer-section">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget company-intro-widget">
+              <a href="index.html" class="site-logo"><img src="https://logo-yellow.png" alt="logo"></a>
+              <ul class="company-footer-contact-list">
+                <li><i class="fas fa-phone"></i>0123456789</li>
+                <li><i class="fas fa-clock"></i>24x7 Support</li>
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget course-links-widget">
+              <h5 class="widget-title">Quick Links</h5>
+              <ul class="courses-link-list">
+                <li><a href="/shop"><i class="fas fa-long-arrow-alt-right"></i>Shop</a></li>
+                <li><a href="/collections"><i class="fas fa-long-arrow-alt-right"></i>Collections</a></li>
+                <li><a href="/about"><i class="fas fa-long-arrow-alt-right"></i>About Us</a></li>
+                <li><a href="/contact"><i class="fas fa-long-arrow-alt-right"></i>Reach Us</a></li>
+                <li><a href="/track-orders"><i class="fas fa-long-arrow-alt-right"></i>Track Order</a></li>
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget latest-news-widget">
+              <h5 class="widget-title">Most liked Collections</h5>
+              <ul class="small-post-list">
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">Collection Name</a>
+                    <h6 class="small-post-title"><a href="#">Famous dress link</a></h6>
+                  </div>
+                </li><!-- small-post-item end -->
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">Collection Name</a>
+                    <h6 class="small-post-title"><a href="#">Famous dress link</a></h6>
+                  </div>
+                </li><!-- small-post-item end -->
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget newsletter-widget">
+              <div class="footer-newsletter">
+                <p>Sign Up to Get Update about our latest collections</p>
+                <form class="news-letter-form">
+                  <input type="email" name="news-email" id="news-email" placeholder="Your email address">
+                  <input class="btn btn-success" type="submit" value="Send">
+                </form>
+              </div>
+            </div>
+          </div><!-- widget end -->
+        </div>
+      </div> 
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-sm-left text-center">
+              <span class="copy-right-text">© 2024-25 <a href="https://krishnadresses.store">krishnadresses.store</a> All Rights Reserved.</span>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <ul class="terms-privacy d-flex justify-content-sm-end justify-content-center">
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div><!-- footer-bottom end -->
+  </footer>
+
+
+
+    <script
+      src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script src="https://kit.fontawesome.com/33d53d7cbd.js" crossorigin="anonymous"></script>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

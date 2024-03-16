@@ -1,0 +1,54 @@
+<style>
+    nav, .navbar, .nav-menu, footer, .footer, header{
+        display: none;
+    }
+</style>
+
+<script>
+
+const Razorpay = require("razorpay");
+
+let response = fetch(`http://127.0.0.1:3000/createorder`, {
+    method: "POST",
+    body: JSON.stringify({{details}}),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const data = response.json();
+  // return data;
+
+  var options = {
+    key_id: "rzp_test_lAd1U8tmNRI153", // Enter the Key ID generated from the Dashboard
+    amount: data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    currency: data.currency,
+    name: "Krishna Dress Store", //your business name
+    order_id: details.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
+    prefill: {
+      //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+      name: "Kartik Dixit", //your customer's name
+      email: "Kartik@example.com",
+      contact: "8595872053", //Provide the customer's phone number for better conversion rates
+    },
+    notes: {
+      address: "Razorpay Corporate Office",
+    },
+    theme: {
+      color: "#399cc",
+    },
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.on("payment.failed", function (response) {
+    console.log("Error Time!!")
+    console.log(response.error.code);
+    console.log(response.error.description);
+    console.log(response.error.source);
+    console.log(response.error.step);
+    console.log(response.error.reason);
+    console.log(response.error.metadata.order_id);
+    console.log(response.error.metadata.payment_id);
+  });
+  rzp1.open();
+
+
+</script>

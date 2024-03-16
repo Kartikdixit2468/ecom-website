@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/css/cart_page.css" />
+<h1>Shopping Cart</h1>
+
+<section class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+{{#if (eq any_product 0)}}
+
+    <div><h1 id="no-product-msg">Your Cart is Empy :( </h1></div>
+  
+  {{else}}
+
+  {{#each products}}
+    <div class="product">
+      <div class="product-image">
+        <img src="{{this.image2}}" />
+      </div>
+      <div class="product-details">
+        <div class="product-title">{{this.title}}</div>
+        <p class="product-description">
+
+          {{#if (gt (getStringLength this.description) 80)}}
+            {{sliceString this.description 0 80}}...
+            <!-- Use the custom helper for slicing -->
+          {{else}}
+            {{this.description}}
+          {{/if}}
+
+        </p>
+      </div>
+    {{!-- <div class="product-quantity">
+    <div type="number" /> {{this.size}} </div>
+      </div> --}}
+      <div class="product-price">{{this.price}}</div>
+      <div class="product-quantity">
+        <div type="number" /> {{this.quantity}} </div>
+      </div>
+      <div class="product-removal">
+        <a href="/my-cart"><button onclick="remove_product({{this.id}})" class="remove-product">
+          Remove
+        </button></a>
+      </div>
+      <div class="product-line-price">{{this.total_price}}</div>
+    </div>
+
+  {{/each}}
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">{{payment.[1]}}</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">{{payment.[0]}}</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">{{payment.[2]}}</div>
+    </div>
+  </div>
+
+  <form action="/checkout" method="POST"><button  class="checkout">Checkout</button></form>
+
+  {{/if}}
+
+</section>
+
+<script src="/js/product.js"></script>

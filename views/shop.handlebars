@@ -1,0 +1,90 @@
+<style>
+  .search-bar{ mix-height: 5vh; max-height: 7vh; margin: 10px; }
+  #search-bar-form{ min-width: 40vw; max-width: 80vw; margin: auto;
+  {{! min-height: inherit; }}
+  display: flex; min-height: 5vh; max-height: 7vh; } #search-input-area{ width:
+  92%; margin: 0px; padding: 6px; min-height: inherit; background-color:
+  #f3f3f3; color: black; border: none; border-radius: 5px 0px 0px 5px; }
+  #search-submit-btn{ width: 7%; min-width: fit-content; padding: 5px;
+  min-height: inherit; background-color: #FEBD69; border-radius: 0px 5px 5px
+  0px; border: none; } .fa-magnifying-glass{ color: white;
+  {{! font-size: larger; }}
+  }
+
+</style>
+
+<section id="shop-page-top">
+  <div class="filter-bar">
+    <a href=""><div class="filter">filter 1</div></a>
+    <a href=""><div class="filter">filter 2</div></a>
+    <a href=""><div class="filter">filter 3</div></a>
+    <a href=""><div class="filter">filter 4</div></a>
+    <a href=""><div class="filter">filter 5</div></a>
+    <a href=""><div class="filter">filter 6</div></a>
+    {{! <a href=""><div class="filter">filter 7</div></a>
+    <a href=""><div class="filter">filter 8</div></a> }}
+  </div>
+
+  <div class="search-bar">
+    <form id="search-bar-form" action="/search">
+      <input
+        name="query"
+        id="search-input-area"
+        type="search"
+        placeholder="Search for products"
+      />
+      <button id="search-submit-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <!-- Font Awesome magnifying glass icon -->
+      </button>
+    </form>
+  </div>
+
+</section>
+
+<section id="about">
+
+  <div class="products-container">
+
+    {{#each products}}
+      {{!-- <div>{{this.id}} - {{this.name}} - {{this.salary}}</div> --}}
+
+
+      <div class="card"><a href="/product/{{this.id}}">
+        <div class="image-holder">
+          <img src="{{this.image2}}" alt="" />
+          {{!-- <img src="images/products/Velvet Designer/3.png" alt="" /> --}}
+        </div>
+        <div class="card-text">
+          <h3>{{this.title}}</h3>
+          <P>
+
+          {{#if (gt (getStringLength this.description) 50)}}
+            {{sliceString this.description 0 50}}... <!-- Use the custom helper for slicing -->
+          {{else}}
+            {{this.description}}
+          {{/if}}
+          {{!-- Laddu Gopal Winter Dress Size 3 Woolen Clothes Khana ji
+                  Krishna Deity Poshak Set (Set of 3) --}}
+          </P>
+        </div>
+        <div class="price-offers">
+          <div class="main-price">
+            <h2>₹{{this.price}}</h2>
+          </div>
+          <div class="price-n-discount">
+            <div class="MRP-PRICE">
+              <strike>₹{{this.mrp}}</strike>
+            </div>
+            <DIV class="OFFER-DISCOUNT">
+              ({{this.discount}}% off)
+            </DIV>
+          </div>
+        </div>
+      </a></div>
+
+
+    {{/each}}
+
+  </div>
+</section>

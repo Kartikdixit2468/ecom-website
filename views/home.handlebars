@@ -1,0 +1,66 @@
+<section id="home">
+
+  <div id="main-area">
+    <h1>Check Out Our Latest Collections</h1>
+    <a href="/shop"><button
+        class="btn btn-outline-white"
+        style="color:white;"
+      >Shop Now</button></a>
+  </div>
+
+  <div class="secondary-area">
+    <div class="container heading">
+      <h1 class="">Latest collection</h1>
+    </div>
+    <div class="container collections-part">
+      <div class="collection-list">
+
+        <div class="products-container">
+
+          {{#each products}}
+            {{!-- <div>{{this.id}} - {{this.name}} - {{this.salary}}</div> --}}
+
+            <div class="card"><a href="/product/{{this.id}}">
+                <div class="image-holder">
+                  <img src="{{this.image2}}" alt="" />
+                  {{! <img src="images/products/Velvet Designer/3.png" alt="" /> }}
+                </div>
+                <div class="card-text">
+                  <h3>{{this.title}}</h3>
+                  <P>
+
+                    {{#if (gt (getStringLength this.description) 50)}}
+                      {{sliceString this.description 0 50}}...
+                      <!-- Use the custom helper for slicing -->
+                    {{else}}
+                      {{this.description}}
+                    {{/if}}
+                    {{! Laddu Gopal Winter Dress Size 3 Woolen Clothes Khana ji
+                  Krishna Deity Poshak Set (Set of 3) }}
+                  </P>
+                </div>
+                <div class="price-offers">
+                  <div class="main-price">
+                    <h2>₹{{this.price}}</h2>
+                  </div>
+                  <div class="price-n-discount">
+                    <div class="MRP-PRICE">
+                      <strike>{{this.mrp}}</strike>
+                    </div>
+                    <DIV class="OFFER-DISCOUNT">
+                      ({{this.discount}}% off)
+                    </DIV>
+                  </div>
+                </div>
+              </a></div>
+
+          {{/each}}
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
