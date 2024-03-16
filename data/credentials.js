@@ -1,6 +1,6 @@
 const credentials = {host: 'localhost',
                             user: 'root',
-                            pass: '',
+                            pass: 'DontTellYou5!',
                             db: 'dress_site'}
 
 module.exports = credentials;

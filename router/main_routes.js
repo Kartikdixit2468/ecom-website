@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const credentials = require("../data/credentials.js");
 const express = require("express");
 const Router = express.Router();
@@ -6,8 +8,8 @@ const mysql = require("mysql2");
 const cookies = require("cookie");
 // const { itemAt } = require("handlebars-helpers/lib/array.js");
 
-const key = "rzp_test_lAd1U8tmNRI153";
-const secret = "yu8M1OyF9iQUTGHi9JlnmuXZ";
+const key = process.env.RAZORPAY_ID_KEY;
+const secret = process.env.RAZORPAY_SECRET_KEY;
 
 function total_item(items) {
   let n = 0;
