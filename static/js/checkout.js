@@ -54,20 +54,20 @@ async function handlePayment(event) {
     amount: data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     currency: data.currency,
     name: "Krishna Dress Store", //your business name
-    order_id: details.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     // callback_url: "",
     handler: async function (response) {
       const orders = getcookies("cart-info");
-      const data = {
+      const mdata = {
         id: response,
-        orderid: details.order_id,
+        orderid: data.id,
         userData: formData,
         orders: orders,
       };
 
       let success = await fetch(`http://127.0.0.1:3000/add-order`, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(mdata),
         headers: { "Content-Type": "application/json" },
       });
 
@@ -79,7 +79,7 @@ async function handlePayment(event) {
       const hiddenInput = document.createElement("input");
       hiddenInput.type = "hidden";
       hiddenInput.name = "payment-id";
-      hiddenInput.value = response.id;
+      hiddenInput.value = response.razorpay_payment_id;;
       newForm.appendChild(hiddenInput);
 
       // Append the form to the document body

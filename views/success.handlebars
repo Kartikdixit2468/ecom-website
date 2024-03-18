@@ -1,0 +1,166 @@
+<style>
+html {
+  height: 100%;
+  font-family: "Cairo", sans-serif;
+
+}
+body {
+  margin: 0px;
+  height: 100%;
+}
+header{
+  display: none !important;
+}
+footer{
+  margin-top: 2vh !important;
+}
+nav{
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.865);
+  height: 5.2vh;
+}
+nav ul{
+  padding: 5px 40px;
+  display: flex;
+  height: inherit;
+  min-width: 30vw;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+nav ul a{
+  margin: 10px;
+  padding: 3px;
+  color: white;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+nav ul a:hover{
+  border-bottom: 2px solid white;
+}
+#container {
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#a .contA {
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 0vh;
+}
+#a {
+  padding: 20px;
+  padding-top: 150px;
+  width: 40%;
+  color: #03486a;
+   
+}
+p {
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 20% !important;
+}
+
+h2, h3 {
+  padding-top: 0px !important;
+  text-align: center;
+}
+#a .stext {
+  padding-bottom: 10px;
+  margin-top: 0px;
+}
+#a #s {
+  border-radius: 5px;
+  width: 100.5%;
+  height: 35px;
+  font-size: 16px;
+  color: white;
+  font-weight: 550;
+  border: none;
+  margin-top: 1.5%;
+}
+#a .btn {
+  text-decoration: none;
+  text-align: center;
+  border: none; 
+  border-radius: 5px;
+  background-color: #03486a;
+  color: white;
+  padding-left: 50px;
+  padding-right:50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-left: 38%;
+}
+#a .btn:hover{
+    color: black;
+    background-color: #5380B4;
+}
+#b {
+  width: 50%;
+  min-height: 87.5vh;
+  padding-top: 30%;
+  background: url(https://cdn-icons-png.flaticon.com/512/7641/7641727.png) no-repeat center
+    center;
+}
+@media only screen and (max-width: 600px) {
+ 
+  #a .contA {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    background-color: EDF3FA;
+  }
+  #a .btn {
+  padding-left: 25px;
+  padding-right:25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 35%;
+}
+  #b {
+    display: none;
+  }
+  #a  {
+    width: 99.5%;
+    border-radius: 3px;
+  }
+  h2 {
+    display: block;
+    margin-bottom: 0%;
+    font-size: 15px;
+  }
+  h3{
+    font-size: 12px;
+  }
+  p {
+    font-size: 11px;
+  }
+}
+
+</style>
+<nav class="navbar">
+  <ul>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/shop">Shop</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+<div id="container">
+  <div id="a">
+    <div class="contA">
+      <h2 class="stext">THANKS FOR YOUR ORDER! </h2><span style="color: #f68428; font-weight: bold; font-size:28px;">Order #{{order_id}}</span> <br><br>
+      <h3> This has been successfully added. </h3>
+      <p class="stext">You will receiving a confirmation email with order details.</p>
+    </div>
+    <a class = "btn" href = "/shop" > Continue Shopping </a> 
+  </div>
+  <div id="b"> </div>
+</div>

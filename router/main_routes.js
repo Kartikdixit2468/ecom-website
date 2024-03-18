@@ -2,11 +2,14 @@ require("dotenv").config();
 
 const credentials = require("../data/credentials.js");
 const express = require("express");
-const Router = express.Router();
 const Razorpay = require("razorpay");
 const mysql = require("mysql2");
 const cookies = require("cookie");
-// const { itemAt } = require("handlebars-helpers/lib/array.js");
+const crypto = require("crypto");
+// const CryptoJS = require('crypto-js');
+// const fs = require('fs');
+
+const Router = express.Router();
 
 const key = process.env.RAZORPAY_ID_KEY;
 const secret = process.env.RAZORPAY_SECRET_KEY;
@@ -371,15 +374,29 @@ Router.post("/add-order", (req, res) => {
   //   orders: orders
   //   };
   let info = req.body;
-  let id = info.id.razorpay_payment_id;
+  let razorpay_payment_id = info.id.razorpay_payment_id;
+  let main_orderid = info.orderid;
+  // let razorpay_order_id = info.id.razorpay_order_id;
+  let razorpay_signature = info.id.razorpay_signature;
   let userData = info.userData;
   let orders = info.orders;
 
-  if (id) {
+  // const generated_signature = CryptoJS.HmacSHA256(main_orderid + "|" + razorpay_payment_id, secret);
+
+  let hmac = crypto.createHmac('sha256', secret);  
+  
+  // Passing the data to be hashed 
+  hmac.update(main_orderid + "|" + razorpay_payment_id); 
+    
+  // Creating the hmac in the required format 
+  const generated_signature = hmac.digest('hex'); 
+
+
+  if (generated_signature == razorpay_signature) {
     const queryString =
       "INSERT INTO `orders` (`payment_id`, `name`, `email`, `cart`, `contact Number`, `Alt Number`, `Address`, `date_time`, `pay_method`, `amount`) VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)";
     const values = [
-      id,
+      razorpay_payment_id,
       userData.name,
       userData.email,
       orders,
@@ -400,14 +417,51 @@ Router.post("/add-order", (req, res) => {
   }
 });
 
-Router.post("/success", (req, res) => {
-  res.send("Your Order Was Successfull");
+Router.post("/success", async(req, res) => {
+  // res.send("Your Order Was Successfull");
+  try{
+    const payment_id = req.body["payment-id"];
+    let [rows, fields] =   await pool.query(`SELECT * FROM orders WHERE payment_id="${payment_id}"`);
+    const my_order = rows;
+    let order_id = my_order[0].order_id;
+    res.render("success", {
+        title: "Krishna Dress Store | Payments",
+        notProductPage: false,
+        order_id: order_id
+      });
+  }
+  catch{
+      res.status(500).send("Invalid Request")
+  }
 });
 
 Router.post("/failed", (req, res) => {
-  res.send("Your Order Was Failed");
+  res.send("Your Order Was Failed | False Payment detected");
+});
+
+Router.get('/3gFj7LsPm4W9eZ8rT2E9gKp6Nc4WqS', async (req, res) => {
+
+  try {
+    // Query orders data from MySQL
+    const [rows, fields] = await pool.query('SELECT * FROM orders');
+    
+    // Convert rows to CSV format
+    const csvData = rows.map(row => Object.values(row).join(','));
+
+    // Create CSV content
+    const csvContent = 'payment_id,name,email,cart,contact_number,alt_number,address,date_time,pay_method,amount\n' + csvData.join('\n');
+
+    // Send CSV as attachment
+    res.setHeader('Content-Disposition', 'attachment; filename="orders.csv"');
+    res.setHeader('Content-Type', 'text/csv');
+    res.status(200).send(csvContent);
+  } catch (error) {
+    console.error('Error exporting orders:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // fetch_data();
 
 module.exports = Router;
+
