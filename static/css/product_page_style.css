@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 *{
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
-.product-details{
+.product-detail{
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-top: 100px !important;
 }
-
-body{
-    line-height: 1.5;
+.product-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .card-wrapper{
     max-width: 1100px;
@@ -185,8 +185,42 @@ img{
     border-color: transparent;
     color: #fff;
 }
+.size-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+.size-btn-container a{
+    color: 
+    white;
+    text-decoration: none;
+    margin: auto;
+    padding: 2px;
+}
+.size-btn-container a div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border: 2px solid 12263a;
+    background-color: #13283d;
+    border-radius: 50%;
+    font-weight: 600;
+}
+.active-size-btn div{
+    border: 3.5px solid rgb(0, 110, 255);
+    background-color: #12263a !important;
+
+}
 
 @media screen and (min-width: 992px){
+    .product-box{
+        margin-top: 150px;
+    }
     .card{
         display: grid;
         grid-template-columns: repeat(2, 1fr);

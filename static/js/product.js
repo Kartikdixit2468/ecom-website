@@ -1,5 +1,3 @@
-const { json } = require("express");
-
 const imgs = document.querySelectorAll(".img-select a");
 const imgBtns = [...imgs];
 let imgId = 1;

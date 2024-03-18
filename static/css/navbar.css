@@ -23,8 +23,10 @@
     display: flex;
     align-self: center;
     justify-self: center;
+    /* border: 2px solid red; */
   }
   .brand div{
+    color: #f7f7f777 !important;
     display: flex;
     align-items: center;
   }
@@ -33,7 +35,7 @@
     /* max-width: fit-content; */
   }
   .active,
-  .nav-div a:hover {
+  .nav-div ul li a:hover {
     color: white !important;
     border-bottom: 1px solid white !important;
   }
@@ -52,11 +54,27 @@
     margin-top: 0px;
     min-height: 12vh;
     background-color: #121212;
-    /* border: 0.2px solid grey; */
+    /* border: 0.2px solid green; */
   }
   .nav-item a {
     color: #f3f3f3;
   }
+
+  #cart-icon i {
+    font-size: x-large;
+  }
+
+  #cart-icon {
+    border: 2px solid transparent;
+  }
+  
+  #cart-icon:hover{
+    color: white;
+    border-color: white;
+    border-radius: 10%;
+  }
+
+
   /* .btn-outline-white{
       border: 1px solid #F3F3F3 !important;
       font-size: medium !important;

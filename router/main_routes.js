@@ -19,63 +19,6 @@ function total_item(items) {
   return n;
 }
 
-function getcookies(name) {
-  let cookies = `; ${document.cookie}`;
-  let part = cookies.split(`; ${name}=`);
-
-  if (part.length == 2) {
-    let value = part.pop().split(";").shift();
-    return value;
-  } else {
-    return "";
-  }
-}
-
-async function handlePayment(id, details) {
-  let response = await fetch(`http://127.0.0.1:3000/createorder`, {
-    method: "POST",
-    body: JSON.stringify(details),
-    headers: { "Content-Type": "application/json" },
-  });
-
-  const data = await response.json();
-  // return data;
-
-  var options = {
-    key_id: "rzp_test_lAd1U8tmNRI153", // Enter the Key ID generated from the Dashboard
-    amount: data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    currency: data.currency,
-    name: "Krishna Dress Store", //your business name
-    order_id: details.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
-    prefill: {
-      //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-      name: "Kartik Dixit", //your customer's name
-      email: "Kartik@example.com",
-      contact: "8595872053", //Provide the customer's phone number for better conversion rates
-    },
-    notes: {
-      address: "Razorpay Corporate Office",
-    },
-    theme: {
-      color: "#399cc",
-    },
-  };
-  var rzp1 = new Razorpay(options);
-  rzp1.on("payment.failed", function (response) {
-    console.log("Error Time!!");
-    console.log(response.error.code);
-    console.log(response.error.description);
-    console.log(response.error.source);
-    console.log(response.error.step);
-    console.log(response.error.reason);
-    console.log(response.error.metadata.order_id);
-    console.log(response.error.metadata.payment_id);
-  });
-  rzp1.open();
-  // e.preventDefault();
-}
-
 // Create the connection pool. The pool-specific settings are the defaults
 const pool = mysql
   .createPool({
@@ -311,7 +254,7 @@ Router.get("/my-cart", async (req, res) => {
     any_product: n,
   });
 });
- 
+
 Router.post("/getorder", async (req, res) => {
   const raw_data = await get_products();
   const my_cookies = cookies.parse(req.headers.cookie || "");
@@ -370,7 +313,7 @@ Router.post("/getorder", async (req, res) => {
     notProductPage: true,
     key: key,
     info: info,
-    details: details, 
+    details: details,
   });
 });
 
@@ -414,14 +357,57 @@ Router.post("/getprice", async (req, res) => {
   });
 
   let details = {
-    amount: (ship_charge + total_price)*100,
-    currency: "INR"
-    };
+    amount: (ship_charge + total_price) * 100,
+    currency: "INR",
+  };
 
   res.send(details);
+});
+
+Router.post("/add-order", (req, res) => {
+  // const data = {
+  //   id: response,
+  //   userData: formData,
+  //   orders: orders
+  //   };
+  let info = req.body;
+  let id = info.id.razorpay_payment_id;
+  let userData = info.userData;
+  let orders = info.orders;
+
+  if (id) {
+    const queryString =
+      "INSERT INTO `orders` (`payment_id`, `name`, `email`, `cart`, `contact Number`, `Alt Number`, `Address`, `date_time`, `pay_method`, `amount`) VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)";
+    const values = [
+      id,
+      userData.name,
+      userData.email,
+      orders,
+      userData.phone,
+      "none",
+      userData.address,
+      userData.payment_method,
+      userData.amount,
+    ];
+    // console.log("I was here")
+    
+    pool.query(queryString, values);
+    // console.log("here now")
+    res.json('true')
+
+  } else {
+    res.json('false')
+  }
+});
+
+Router.post("/success", (req, res) => {
+  res.send("Your Order Was Successfull");
+});
+
+Router.post("/failed", (req, res) => {
+  res.send("Your Order Was Failed");
 });
 
 // fetch_data();
 
 module.exports = Router;
-

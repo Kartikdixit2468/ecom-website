@@ -22,3 +22,11 @@ INSERT INTO products_info (sno, id, title, description, colour, size, price, mrp
 INSERT INTO products_info (sno, id, title, description, colour, size, price, mrp, discount, out_of_stock, image1, image2) VALUES ('54', '100054', 'DESIGNER SUMMER COTTON DRESS', 'KHADI COLOUR POSHAK FOR LADDU GOPAL | SUMMER COLLECTION | EUNRY COLOUR | UNIQUE DESIGN | WITH VARIETY OF COLOURS ', 'EUNRY', '4', '49', '299', '65', '0', '\\images\\products\\Cotton\\3.png', '\\images\\products\\Cotton\\C.png');
 INSERT INTO products_info (sno, id, title, description, colour, size, price, mrp, discount, out_of_stock, image1, image2) VALUES ('55', '100055', 'DESIGNER SUMMER COTTON DRESS', 'KHADI COLOUR POSHAK FOR LADDU GOPAL | SUMMER COLLECTION | EUNRY COLOUR | UNIQUE DESIGN | WITH VARIETY OF COLOURS ', 'EUNRY', '5', '59', '299', '65', '0', '\\images\\products\\Cotton\\3.png', '\\images\\products\\Cotton\\C.png');
 
+
+
+
+
+
+
+
+INSERT INTO `orders` (`payment_id`, `name`, `email`, `cart`, `contact Number`, `Alt Number`, `Address`, `date_time`, `pay_method`, `amount`) VALUES ('pay_123456', 'Kartik Dixit', 'kartik@gmail.com', '[{\"id\":100019,\"quantity\":\"1\"},{\"id\":100024,\"quantity\":\"1\"}]', '8595872053', '9897445643', '208 Ratlamkunj, Vanshivat temple\r\nnear by Gopeshwar Temple,\r\nVrindavan, Uttar Pradesh, India', CURRENT_TIMESTAMP, 'prepaid', '599');
