@@ -1,0 +1,16 @@
+payment_id,name,email,cart,contact_number,alt_number,address,date_time,pay_method,amount
+10000,pay_123456,Kartik Dixit,kartik@gmail.com,[{"id":100019,"quantity":"1"},{"id":100024,"quantity":"1"}],8595872053,9897445643,208 Ratlamkunj, Vanshivat temple
+near by Gopeshwar Temple,
+Vrindavan, Uttar Pradesh, India,Mon Mar 18 2024 13:27:53 GMT+0530 (India Standard Time),prepaid,599
+10027,pay_NnxK1e54lbsi2B,Kartik Dixit,kartikdixit2468@gmail.com,[{"id":100024,"quantity":"5"}],+918595872053,none,208 Ratlamkunj, Vanshivat temple, 
+      near by Gopeshwar Temple, 
+      Vrindavan, Uttar Pradesh, India,
+
+      UP,
+      IND,Tue Mar 19 2024 02:19:38 GMT+0530 (India Standard Time),prepaid,745
+10028,none,Kartik Dixit,kartikdixit2468@gmail.com,[{"id":100019,"quantity":"7"}],+918595872053,none,208 Ratlamkunj, Vanshivat temple, 
+      near by Gopeshwar Temple, 
+      Vrindavan, Uttar Pradesh, India,
+
+      UP,
+      IND,Tue Mar 19 2024 02:20:03 GMT+0530 (India Standard Time),cod,1003

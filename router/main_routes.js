@@ -374,12 +374,36 @@ Router.post("/add-order", (req, res) => {
   //   orders: orders
   //   };
   let info = req.body;
+  let userData = info.userData;
+  let orders = info.orders;
+
+  if (info.payment_method == 'cod'){
+
+    const queryString =
+      "INSERT INTO `orders` (`payment_id`, `name`, `email`, `cart`, `contact Number`, `Alt Number`, `Address`, `date_time`, `pay_method`, `amount`) VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)";
+    const values = [
+      "none",
+      userData.name,
+      userData.email,
+      orders,
+      userData.phone,
+      "none",
+      userData.address,
+      userData.payment_method,
+      userData.amount,
+    ];
+    // console.log("I was here")
+    
+    pool.query(queryString, values);
+    // console.log("here now")
+    res.json('true')
+
+  }
+  else if (info.payment_method == 'prepaid'){
   let razorpay_payment_id = info.id.razorpay_payment_id;
   let main_orderid = info.orderid;
   // let razorpay_order_id = info.id.razorpay_order_id;
   let razorpay_signature = info.id.razorpay_signature;
-  let userData = info.userData;
-  let orders = info.orders;
 
   // const generated_signature = CryptoJS.HmacSHA256(main_orderid + "|" + razorpay_payment_id, secret);
 
@@ -415,21 +439,46 @@ Router.post("/add-order", (req, res) => {
   } else {
     res.json('false')
   }
+}
+else {
+  res.json('false')
+}
 });
 
 Router.post("/success", async(req, res) => {
   // res.send("Your Order Was Successfull");
   try{
+    if (req.body.payment_method == 'prepaid'){
     const payment_id = req.body["payment-id"];
     let [rows, fields] =   await pool.query(`SELECT * FROM orders WHERE payment_id="${payment_id}"`);
     const my_order = rows;
     let order_id = my_order[0].order_id;
+
     res.render("success", {
+      title: "Krishna Dress Store | Payments",
+      notProductPage: false,
+      order_id: order_id
+    });
+    }
+    
+    else if (req.body.payment_method == 'cod'){
+
+      
+      let name = req.body.name;
+      let orders = req.body.orders;
+
+      let [rows, fields] =   await pool.query(`SELECT * FROM orders WHERE payment_id="none" AND name='${name}' AND cart='${orders}'`);
+      const my_order = rows;
+      let order_id = my_order[0].order_id;
+
+      res.render("success", {
         title: "Krishna Dress Store | Payments",
         notProductPage: false,
         order_id: order_id
       });
-  }
+    }
+
+    }
   catch{
       res.status(500).send("Invalid Request")
   }
